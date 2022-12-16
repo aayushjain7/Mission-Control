@@ -3,9 +3,11 @@ jest.setTimeout(20000);
 const request = require('supertest');
 const app = require('../../app');
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo');
+const { loadPlantsData } = require('../../models/planets.model');
 
 beforeAll(async () => {
 	await mongoConnect();
+	await loadPlantsData();
 });
 
 afterAll(async () => {
